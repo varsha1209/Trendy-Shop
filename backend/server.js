@@ -1,23 +1,30 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import path from "path";
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js";
-import config from "./config.js";
+const PORT = process.env.PORT;
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const mongodbUrl = config.MONGODB_URL;
+dotenv.config({ path: "./config.env" });
+const mongodbUrl = processs.env.DATABASE;
 mongoose
   .connect(mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .catch((error) => console.log(error.reason));
+  .then(() => {
+    console.log("connect mongodb");
+  })
+  .catch((error) => {
+    console.log("no connection");
+  });
 
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
@@ -42,6 +49,6 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-app.listen(config.PORT, () => {
-  console.log("Server started at http://localhost:5000");
+app.listen(PORT, () => {
+  console.log("Server started at ${PORT}");
 });
