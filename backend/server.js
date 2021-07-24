@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 dotenv.config({ path: "./config.env" });
-const mongodbUrl = processs.env.DATABASE;
+const mongodbUrl = process.env.DATABASE;
 mongoose
   .connect(mongodbUrl, {
     useNewUrlParser: true,
@@ -50,5 +50,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server started at ${PORT}");
+  console.log(`Server started at ${PORT}`);
 });
