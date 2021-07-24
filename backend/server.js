@@ -4,7 +4,7 @@ import path from "path";
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js";
-import config from "./config";
+import config from "./config.js";
 
 const app = express();
 app.use(express.json());
