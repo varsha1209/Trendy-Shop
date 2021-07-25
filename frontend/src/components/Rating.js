@@ -1,6 +1,6 @@
 import React from "react";
 
-function Rating(props) {
+export default function Rating(props) {
   const { rating, numReviews } = props;
   return (
     <div className="rating">
@@ -63,5 +63,3 @@ function Rating(props) {
     </div>
   );
 }
-
-export default Rating;

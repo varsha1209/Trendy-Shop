@@ -31,7 +31,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazon
+              TrendyShop
             </Link>
           </div>
           <div>
@@ -108,7 +108,7 @@ function App() {
           <Route path="/product/:id" component={ProductScreen}></Route>
         </main>
         <footer className="row center">
-          <div>All right reserved</div>
+          <div>All right reserved@2021</div>
         </footer>
       </div>
     </BrowserRouter>
